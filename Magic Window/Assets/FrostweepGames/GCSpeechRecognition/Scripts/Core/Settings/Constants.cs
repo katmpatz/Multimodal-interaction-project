@@ -4,7 +4,7 @@
     {
 		public const string ROOT_REQUEST_URL = "https://speech.googleapis.com";
 		public const string API_VERSION = "/v1/";
-		public const string API_KEY_PARAM = "?key=AIzaSyBpz6H28LE_lA1oSI7eGvv93IBNOM-zktE";
+		public const string API_KEY_PARAM = "?key=";
 
 		public const string POST_RECOGNIZE_REQUEST_URL = "speech:recognize";
 		public const string POST_LONG_RUNNING_RECOGNIZE_REQUEST_URL = "speech:longrunningrecognize";
