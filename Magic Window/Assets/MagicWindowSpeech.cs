@@ -11,8 +11,8 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 		
 
 		private GCSpeechRecognition _speechRecognition;
+		private ColorBlock theColor;
 
-	
 
 		private Button _startRecordButton;
 					//   _stopRecordButton,
@@ -25,7 +25,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 
 		//private Image _speechRecognitionState;
 
-		private Text _resultText;
+		private Text _resultText, _textTest;
 
 		//private Toggle _voiceDetectionToggle,
 		//			   _recognizeDirectlyToggle,
@@ -68,6 +68,8 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 		// Start is called before the first frame update
 		void Start()
 		{
+			
+
 			_speechRecognition = GCSpeechRecognition.Instance;
 			_speechRecognition.RecognizeSuccessEvent += RecognizeSuccessEventHandler;
 			_speechRecognition.RecognizeFailedEvent += RecognizeFailedEventHandler;
@@ -80,8 +82,9 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 
 			//_contextPhrasesInputField = transform.Find("Canvas/InputField_SpeechContext").GetComponent<InputField>();
 			_startRecordButton = transform.Find("Canvas/Button_StartRecord").GetComponent<Button>();
-			_resultText = transform.Find("Canvas/Panel_ContentResult/Text_Area/Text_Result").GetComponent<Text>();
-		//	_languageDropdown = transform.Find("Canvas/Dropdown_Language").GetComponent<Dropdown>();
+			_resultText = transform.Find("Canvas/PanelTest/GameObject/Texttest").GetComponent<Text>();
+		//	_textTest = transform.Find("Canvas/PanelTest/GameObject/Texttest").GetComponent<Text>();
+			//	_languageDropdown = transform.Find("Canvas/Dropdown_Language").GetComponent<Dropdown>();
 			_microphoneDevicesDropdown = transform.Find("Canvas/Dropdown_MicrophoneDevices").GetComponent<Dropdown>();
 			_voiceLevelImage = transform.Find("Canvas/Panel_VoiceLevel/Image_Level").GetComponent<Image>();
 
@@ -101,7 +104,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 		//	_languageDropdown.value = _languageDropdown.options.IndexOf(_languageDropdown.options.Find(x => x.text == Enumerators.LanguageCode.en_US.Parse()));
 
 			RefreshMicsButtonOnClickHandler();
-
+			//StartRecordButtonOnClickHandler();
 		}
 
 		private void OnDestroy()
@@ -135,19 +138,20 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 					}
 
 					_voiceLevelImage.color = current >= 1f ? Color.green : Color.red;
-				//	_resultText.text = "yes sound is colour changing";
+					//_resultText.text = "yes sound is colour changing";
 				}
 				//_resultText.text = "yes sound is recording";
 			}
 			else
 			{
 				_voiceLevelImage.fillAmount = 0f;
-				//_resultText.text = "No sound detected";
+				_resultText.text = "No sound detected";
 			}
 		}
 
 		private void RefreshMicsButtonOnClickHandler()
 		{
+			
 			_speechRecognition.RequestMicrophonePermission(null);
 
 			_microphoneDevicesDropdown.ClearOptions();
@@ -178,7 +182,10 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 		private void StartRecordButtonOnClickHandler()
 		{
 			_startRecordButton.interactable = false;
-			_resultText.text = string.Empty;
+
+
+			//_resultText.text = string.Empty;
+			_resultText.text = "Button clicked";
 			_speechRecognition.StartRecord(true);
 		}
 
@@ -191,6 +198,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 		private void BeginTalkigEventHandler()
 		{
 			_resultText.text = "<color=blue>Speech Began.</color>";
+			_textTest.text= "<color=blue>Speech Began.</color>";
 		}
 
 		private void EndTalkigEventHandler(AudioClip clip, float[] raw)

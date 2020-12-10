@@ -99,7 +99,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 				_languageDropdown.options.Add(new Dropdown.OptionData(((Enumerators.LanguageCode)i).Parse()));
 			}
 
-			_languageDropdown.value = _languageDropdown.options.IndexOf(_languageDropdown.options.Find(x => x.text == Enumerators.LanguageCode.en_US.Parse()));
+			_languageDropdown.value = _languageDropdown.options.IndexOf(_languageDropdown.options.Find(x => x.text == Enumerators.LanguageCode.en_GB.Parse()));
 
 			RefreshMicsButtonOnClickHandler();
 		}
@@ -146,7 +146,6 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 			else
 			{
 				_voiceLevelImage.fillAmount = 0f;
-			
 			}
 		}
 
@@ -181,9 +180,6 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition.Examples
 			_resultText.text = string.Empty;
 
 			_speechRecognition.StartRecord(_voiceDetectionToggle.isOn);
-		//	_resultText.text = "voice toggel status " + _voiceDetectionToggle.isOn;
-		//	Console.WriteLine("voice toggel status " + _voiceDetectionToggle.isOn);
-
 		}
 
 		private void StopRecordButtonOnClickHandler()
