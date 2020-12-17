@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 
 
@@ -8,7 +9,9 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 {
 	public class MagicWindowSpeech : MonoBehaviour
 	{
-		
+
+		private string actionType, seasonParameter;
+		private DateTime weatherDate; 
 
 		private GCSpeechRecognition _speechRecognition;
 		private ColorBlock theColor;
@@ -25,7 +28,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 
 		//private Image _speechRecognitionState;
 
-		private Text _resultText, _textTest;
+		private Text _resultText;
 
 		//private Toggle _voiceDetectionToggle,
 		//			   _recognizeDirectlyToggle,
@@ -198,7 +201,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 		private void BeginTalkigEventHandler()
 		{
 			_resultText.text = "<color=blue>Speech Began.</color>";
-			_textTest.text= "<color=blue>Speech Began.</color>";
+			//_textTest.text= "<color=blue>Speech Began.</color>";
 		}
 
 		private void EndTalkigEventHandler(AudioClip clip, float[] raw)
@@ -228,7 +231,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 			"summer",
 			"next day",
 			"autumn",
-			"spring" }
+			"spring" , "winter", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}
 		
 		//phrases = _contextPhrasesInputField.text.Replace(" ", string.Empty).Split(',')
 				}
@@ -283,17 +286,88 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 			if (words != null)
 			{
 				string times = string.Empty;
+				string phrase, today;
+				actionType = "";
+				seasonParameter = "";
+				weatherDate = DateTime.Now; // dont know how to reset this!!!
+
+
+
+				string[] dayofWeek = { "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday" };
 
 				foreach (var item in recognitionResponse.results[0].alternatives[0].words)
 				{
-					times += "<color=green>" + item.word + "</color> -  start: " + item.startTime + "; end: " + item.endTime + "\n";
+					//times += "<color=green>" + item.word+ "\n";// + "</color> -  start: " + item.startTime + "; end: " + item.endTime + "\n";
+
+					phrase = item.word;
+					phrase = phrase.ToLower();
+					//_resultText.text += "\n" + phrase;
+					if (phrase.Contains("today") || phrase.Contains("tomorrow") || phrase.Contains("sunday") || phrase.Contains("monday") || phrase.Contains("tuesday") || phrase.Contains("wednesday") || phrase.Contains("thursday") || phrase.Contains("friday") || phrase.Contains("saturday"))
+					{
+						actionType = "weather";
+
+						if (phrase.Contains("today"))
+						{
+							phrase = "today";
+							weatherDate = DateTime.Now;
+
+						}
+						else if (phrase.Contains("tomorrow"))
+						{
+							phrase = "tomorrow";
+								weatherDate = DateTime.Now.AddDays(1);
+						}
+
+						else
+						{
+
+							today = DateTime.Now.DayOfWeek.ToString();
+							today = today.ToLower();
+							phrase = phrase.Replace("?", String.Empty).Replace("'s",String.Empty).Replace(".", String.Empty).Replace(",",String.Empty);
+							phrase = phrase.ToLower();
+
+							int index1 = Array.IndexOf(dayofWeek, phrase);
+							int indexToday = Array.IndexOf(dayofWeek, today);
+							//_resultText.text += "\n index 1=" + index1 + "indexToday=" + indexToday + "today is: " + today;
+
+							if (index1 > indexToday) { weatherDate = DateTime.Now.AddDays(index1 - indexToday); }
+							else if (index1 < indexToday) { weatherDate = DateTime.Now.AddDays(index1 - indexToday + 7); } // if its a earlier day than today, calculate the next week's same day
+							else { weatherDate = DateTime.Now; }
+						}
+					
+					
+					}
+					else if (phrase.Contains("summer") || phrase.Contains("autumn") || phrase.Contains("spring") || phrase.Contains("sun") || phrase.Contains("sunny") || phrase.Contains("winter"))
+					{
+						phrase = phrase.Replace("?", String.Empty).Replace("'s", String.Empty).Replace(".", String.Empty).Replace(",", String.Empty);
+						phrase = phrase.ToLower();
+
+						actionType = "season";
+						seasonParameter = phrase;
+					}
 				}
+
+				// step 1 - Call getWeather(DateTime wdate) APIs to get weather status (return object would have a seasons parameter)
+				// step 2 - call video player to change "showWeather" showWeather(string actionType, string seasonParameter)
+
+				times += "ActionType = " + actionType + "\n"
+						+ "seasonParameter = " + seasonParameter + "\n"
+						+ "weatherDate = " + weatherDate + "\n";
 
 				_resultText.text += "\n" + times;
 			}
 
-			
+
+		
 		}
+
+		private void getWeather(DateTime wdate)
+		{
+			//return me the weather
+		}
+
+
+		
 
 	}
 }
