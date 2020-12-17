@@ -6,13 +6,13 @@ public class TransformScale : MonoBehaviour
 {
 
     private Renderer rend;
-    public GameObject testObj;
+    public GameObject windowPlane;
     private Vector3 scaleChange, positionChange;
 
     // Start is called before the first frame update
     void Start()
     {
-        rend = testObj.GetComponent<Renderer>();
+        rend = windowPlane.GetComponent<Renderer>();
     }
 
     // Update is called once per frame
