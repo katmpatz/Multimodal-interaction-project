@@ -16,6 +16,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 		private GCSpeechRecognition _speechRecognition;
 		private ColorBlock theColor;
 
+		public GameObject ARObject;
 
 		private Button _startRecordButton;
 					//   _stopRecordButton,
@@ -344,6 +345,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 
 						actionType = "season";
 						seasonParameter = phrase;
+
 					}
 				}
 
@@ -355,10 +357,48 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 						+ "weatherDate = " + weatherDate + "\n";
 
 				_resultText.text += "\n" + times;
+
+				ChangeView(actionType, seasonParameter);
+
 			}
 
 
 		
+		}
+
+		void ChangeView(string actionType, string parameter)
+		{
+			var videoPlayer = ARObject.GetComponent<UnityEngine.Video.VideoPlayer>();
+			Debug.Log("detected " + actionType + " " + parameter);
+
+			switch (actionType)
+			{
+				case "season":
+					switch (parameter)
+					{
+					case "summmer":
+						videoPlayer.url = "Assets/Videos/video-sky.mp4";
+						break;
+					case "winter":
+						videoPlayer.url = "Assets/Videos/video-sky.mp4";
+						break;
+					case "spring":
+						videoPlayer.url = "Assets/Videos/video-forest.mp4";
+						break;
+					case "autumn":
+						videoPlayer.url = "Assets/Videos/video-sky.mp4";
+						break;
+					}
+					break;
+				case "weather":
+					switch (parameter)
+					{
+					case "snowing":
+						videoPlayer.url = "Assets/Videos/video-sky.mp4";
+						break;
+					}
+					break;  
+			}
 		}
 
 		private void getWeather(DateTime wdate)
