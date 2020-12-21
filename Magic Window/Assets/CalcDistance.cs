@@ -53,8 +53,8 @@ public class CalcDistance : MonoBehaviour
 
         //mytext.text =
         //   "\n width = " + gap
-        //   + "\n height = " + height
+        //   + "\n height = " + height;
 
-           ;
+           
     }
 }

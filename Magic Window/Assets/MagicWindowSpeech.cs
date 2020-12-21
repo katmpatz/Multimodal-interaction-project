@@ -17,8 +17,12 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 		private ColorBlock theColor;
 
 		public GameObject ARObject;
+		public GameObject InstructionPanel;
+		public Sprite Mike_Red, Mike_white;
 
-		private Button _startRecordButton;
+		private Button _startRecordButton,
+						_closeInstructions,
+						_helpButton	;
 					//   _stopRecordButton,
 					//   _getOperationButton,
 					//   _getListOperationsButton,
@@ -30,6 +34,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 		//private Image _speechRecognitionState;
 
 		private Text _resultText;
+		
 
 		//private Toggle _voiceDetectionToggle,
 		//			   _recognizeDirectlyToggle,
@@ -86,7 +91,10 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 
 			//_contextPhrasesInputField = transform.Find("Canvas/InputField_SpeechContext").GetComponent<InputField>();
 			_startRecordButton = transform.Find("Canvas/Button_StartRecord").GetComponent<Button>();
+			_closeInstructions= transform.Find("Canvas/Panel_HelpText/Button_close").GetComponent<Button>();
+			_helpButton = transform.Find("Canvas/NameBoard_Panel/Button_help").GetComponent<Button>();
 			_resultText = transform.Find("Canvas/PanelTest/GameObject/Texttest").GetComponent<Text>();
+
 		//	_textTest = transform.Find("Canvas/PanelTest/GameObject/Texttest").GetComponent<Text>();
 			//	_languageDropdown = transform.Find("Canvas/Dropdown_Language").GetComponent<Dropdown>();
 			_microphoneDevicesDropdown = transform.Find("Canvas/Dropdown_MicrophoneDevices").GetComponent<Dropdown>();
@@ -94,18 +102,23 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 
 			_startRecordButton.onClick.AddListener(StartRecordButtonOnClickHandler);
 			_startRecordButton.interactable = true;
+
+			_closeInstructions.onClick.AddListener(CloseInstructionPanelOnClickHandler);
+			_helpButton.onClick.AddListener(OpenHelpPanelOnClickHandler);
+
 			_microphoneDevicesDropdown.onValueChanged.AddListener(MicrophoneDevicesDropdownOnValueChangedEventHandler);
 
+			
 			//Loading the language options
 			//_languageDropdown.ClearOptions();
 
 			//_languageDropdown.AddOptions(m_DropOptions);
-		/*	for (int i = 0; i < Enum.GetNames(typeof(Enumerators.LanguageCode)).Length; i++)
-			{
-				_languageDropdown.options.Add(new Dropdown.OptionData(((Enumerators.LanguageCode)i).Parse()));
-			}
-		*/
-		//	_languageDropdown.value = _languageDropdown.options.IndexOf(_languageDropdown.options.Find(x => x.text == Enumerators.LanguageCode.en_US.Parse()));
+			/*	for (int i = 0; i < Enum.GetNames(typeof(Enumerators.LanguageCode)).Length; i++)
+				{
+					_languageDropdown.options.Add(new Dropdown.OptionData(((Enumerators.LanguageCode)i).Parse()));
+				}
+			*/
+			//	_languageDropdown.value = _languageDropdown.options.IndexOf(_languageDropdown.options.Find(x => x.text == Enumerators.LanguageCode.en_US.Parse()));
 
 			RefreshMicsButtonOnClickHandler();
 			//StartRecordButtonOnClickHandler();
@@ -125,6 +138,8 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 		// Update is called once per frame
 		void Update()
 		{
+
+			/*
 			if (_speechRecognition.IsRecording)
 			{
 				if (_speechRecognition.GetMaxFrame() > 0)
@@ -149,9 +164,24 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 			else
 			{
 				_voiceLevelImage.fillAmount = 0f;
-				_resultText.text = "No sound detected";
+				//_resultText.text = "\n Click on the Voice Button to speak";
 			}
+
+			*/
 		}
+
+		private void CloseInstructionPanelOnClickHandler()
+		{
+			InstructionPanel.SetActive(false);
+
+		}
+
+		private void OpenHelpPanelOnClickHandler()
+		{
+			InstructionPanel.SetActive(false);
+			InstructionPanel.SetActive(true);
+		}
+
 
 		private void RefreshMicsButtonOnClickHandler()
 		{
@@ -180,13 +210,13 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 
 		private void StartedRecordEventHandler()
 		{
-			_resultText.text = "StartedRecordEventHandler";
+			_resultText.text = "Ask for a season you want to see or for the weather during the next week's days.";
 		}
 
 		private void StartRecordButtonOnClickHandler()
 		{
 			_startRecordButton.interactable = false;
-
+			_startRecordButton.image.sprite = Mike_Red;
 
 			//_resultText.text = string.Empty;
 			_resultText.text = "Button clicked";
@@ -201,13 +231,13 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 
 		private void BeginTalkigEventHandler()
 		{
-			_resultText.text = "<color=blue>Speech Began.</color>";
+			_resultText.text = "\nI am listening";
 			//_textTest.text= "<color=blue>Speech Began.</color>";
 		}
 
 		private void EndTalkigEventHandler(AudioClip clip, float[] raw)
 		{
-			_resultText.text += "\n<color=blue>Speech Ended.</color>";
+			_resultText.text = "\nWait a moment..";
 
 			FinishedRecordEventHandler(clip, raw);
 		}
@@ -268,7 +298,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 
 		private void RecognizeSuccessEventHandler(RecognitionResponse recognitionResponse)
 		{
-			_resultText.text = "Recognize Success.";
+			//_resultText.text = "Recognize Success.";
 			InsertRecognitionResponseInfo(recognitionResponse);
 		}
 
@@ -280,7 +310,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 				return;
 			}
 
-			_resultText.text += "\n" + recognitionResponse.results[0].alternatives[0].transcript;
+			_resultText.text = "\n You said: \n '" + recognitionResponse.results[0].alternatives[0].transcript + "'";
 
 			var words = recognitionResponse.results[0].alternatives[0].words;
 
@@ -352,18 +382,23 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 				// step 1 - Call getWeather(DateTime wdate) APIs to get weather status (return object would have a seasons parameter)
 				// step 2 - call video player to change "showWeather" showWeather(string actionType, string seasonParameter)
 
-				times += "ActionType = " + actionType + "\n"
+		/*		times += "ActionType = " + actionType + "\n"
 						+ "seasonParameter = " + seasonParameter + "\n"
 						+ "weatherDate = " + weatherDate + "\n";
 
 				_resultText.text += "\n" + times;
-
+		*/
 				ChangeView(actionType, seasonParameter);
 
 			}
 
+			_startRecordButton.interactable = true;
+			_startRecordButton.image.sprite = Mike_white;
 
-		
+			_speechRecognition.StopRecord();
+
+
+
 		}
 
 		void ChangeView(string actionType, string parameter)
@@ -386,7 +421,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 						videoPlayer.url = "Assets/Videos/video-forest.mp4";
 						break;
 					case "autumn":
-						videoPlayer.url = "Assets/Videos/video-sky.mp4";
+						videoPlayer.url = "Assets/Videos/Autumn.mp4";
 						break;
 					}
 					break;
