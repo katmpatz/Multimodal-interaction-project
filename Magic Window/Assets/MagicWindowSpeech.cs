@@ -12,7 +12,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 
 		private string actionType, seasonParameter;
 		private DateTime weatherDate;
-		private Color colour;
+		
 		private GCSpeechRecognition _speechRecognition;
 		private ColorBlock theColor;
 
@@ -220,7 +220,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 			_startRecordButton.image.sprite = Mike_Red;
 
 			
-			colour.a = 255f;
+			//colour.a = 255f;
 			//_startRecordButton.GetComponent<Image>().color = colour;
 			
 
