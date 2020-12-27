@@ -610,7 +610,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 648105894}
+  - {fileID: 1412625194}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -986,7 +986,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 248, y: 531}
+  m_AnchoredPosition: {x: 553, y: 643}
   m_SizeDelta: {x: 277.00256, y: 73.83801}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &299447149
@@ -1450,34 +1450,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 585744662}
   m_CullTransparentMesh: 0
---- !u!21 &648105894
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'Pict4Material
-
-    14010'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f6123be4658a4c028a12702830862506, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &653729027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,7 +1631,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1704546358}
+  - {fileID: 1722669736}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1956,7 +1928,7 @@ GameObject:
   - component: {fileID: 760547545}
   - component: {fileID: 760547544}
   m_Layer: 5
-  m_Name: Weather
+  m_Name: weather
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1976,9 +1948,8 @@ RectTransform:
   - {fileID: 63958351}
   - {fileID: 1859042160}
   - {fileID: 1944524757}
-  - {fileID: 1448580004}
   m_Father: {fileID: 2123585269}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2730,6 +2701,34 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!21 &1412625194
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'Pict4Material
+
+    14182'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: f6123be4658a4c028a12702830862506, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1448580003
 GameObject:
   m_ObjectHideFlags: 0
@@ -2761,12 +2760,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 777639484}
-  m_Father: {fileID: 760547543}
-  m_RootOrder: 3
+  m_Father: {fileID: 2123585269}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 76.265, y: -252}
+  m_AnchoredPosition: {x: 76.265, y: -201.00002}
   m_SizeDelta: {x: 152.5297, y: 152.5297}
   m_Pivot: {x: 1, y: 3.3065553}
 --- !u!114 &1448580005
@@ -2793,7 +2792,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3031,7 +3030,7 @@ RectTransform:
   m_GameObject: {fileID: 1518630879}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2032738, y: 0.1664886, z: 1.2189449}
+  m_LocalScale: {x: 1.2032738, y: 0.20186743, z: 1.2189449}
   m_Children:
   - {fileID: 1512716790}
   m_Father: {fileID: 2123585269}
@@ -3316,34 +3315,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!21 &1635668210
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'pict3Material
-
-    14338'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 747f318e951c450789f918fc7ab52de8, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1666365389
 GameObject:
   m_ObjectHideFlags: 0
@@ -3418,7 +3389,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666365389}
   m_CullTransparentMesh: 0
---- !u!21 &1704546358
+--- !u!21 &1706694412
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'pict3Material
+
+    14544'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 747f318e951c450789f918fc7ab52de8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
+--- !u!21 &1722669736
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -3427,7 +3426,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: 'pict2Material
 
-    14104'
+    14266'
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -4414,8 +4413,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ARObject: {fileID: 61573377}
   InstructionPanel: {fileID: 72942801}
-  Mike_Red: {fileID: 21300000, guid: abb9e0458eb874876975f2e6e6b305bf, type: 3}
-  Mike_white: {fileID: 21300000, guid: f20e25f0107454a9e9f02b3c0ee1616a, type: 3}
+  Mike_Red: {fileID: 21300000, guid: c0df793b35cca486781052bf21dc6c22, type: 3}
+  Mike_white: {fileID: 21300000, guid: 23d0a8eaadb611848a0d22254eb522bf, type: 3}
 --- !u!114 &1970351688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4698,6 +4697,7 @@ RectTransform:
   - {fileID: 282334860}
   - {fileID: 72942802}
   - {fileID: 1518630880}
+  - {fileID: 1448580004}
   - {fileID: 760547543}
   m_Father: {fileID: 1970351686}
   m_RootOrder: 3
@@ -4861,7 +4861,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1635668210}
+  - {fileID: 1706694412}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

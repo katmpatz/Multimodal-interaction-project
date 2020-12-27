@@ -11,8 +11,8 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 	{
 
 		private string actionType, seasonParameter;
-		private DateTime weatherDate; 
-
+		private DateTime weatherDate;
+		private Color colour;
 		private GCSpeechRecognition _speechRecognition;
 		private ColorBlock theColor;
 
@@ -215,8 +215,14 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 
 		private void StartRecordButtonOnClickHandler()
 		{
+
 			_startRecordButton.interactable = false;
 			_startRecordButton.image.sprite = Mike_Red;
+
+			
+			colour.a = 255f;
+			//_startRecordButton.GetComponent<Image>().color = colour;
+			
 
 			//_resultText.text = string.Empty;
 			_resultText.text = "Button clicked";
@@ -306,11 +312,15 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 		{
 			if (recognitionResponse == null || recognitionResponse.results.Length == 0)
 			{
-				_resultText.text = "\nWords not detected.";
+				_resultText.text = "\nWords not detected. Try again";
+			//	_startRecordButton.interactable = true;
+			//	_startRecordButton.image.sprite = Mike_white;
+
+			//	_speechRecognition.StopRecord();
 				return;
 			}
 
-			_resultText.text = "\n You said: \n '" + recognitionResponse.results[0].alternatives[0].transcript + "'";
+			_resultText.text = "You said: " + recognitionResponse.results[0].alternatives[0].transcript + "'";
 
 			var words = recognitionResponse.results[0].alternatives[0].words;
 
@@ -382,13 +392,27 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 				// step 1 - Call getWeather(DateTime wdate) APIs to get weather status (return object would have a seasons parameter)
 				// step 2 - call video player to change "showWeather" showWeather(string actionType, string seasonParameter)
 
-		/*		times += "ActionType = " + actionType + "\n"
-						+ "seasonParameter = " + seasonParameter + "\n"
-						+ "weatherDate = " + weatherDate + "\n";
+				/*		times += "ActionType = " + actionType + "\n"
+								+ "seasonParameter = " + seasonParameter + "\n"
+								+ "weatherDate = " + weatherDate + "\n";
 
-				_resultText.text += "\n" + times;
-		*/
-				ChangeView(actionType, seasonParameter);
+						_resultText.text += "\n" + times;
+				*/
+				//call this only if actionType=season, else call katerina's script
+				if (actionType == "season")
+				{
+					ChangeView(actionType, seasonParameter);
+				}
+				else if (actionType == "weather")
+				{
+					//changeWeather(weatherDate)
+				}
+				else {
+					_resultText.text += "\n Ask for e.g what's the weather tomorrow";
+				}
+
+				
+				
 
 			}
 
@@ -396,6 +420,8 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 			_startRecordButton.image.sprite = Mike_white;
 
 			_speechRecognition.StopRecord();
+			actionType = "";
+			seasonParameter = "";
 
 
 
