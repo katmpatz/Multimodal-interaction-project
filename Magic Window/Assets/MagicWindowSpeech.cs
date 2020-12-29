@@ -405,7 +405,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 				}
 				else if (actionType == "weather")
 				{
-					//changeWeather(weatherDate)
+					getWeather(weatherDate)
 				}
 				else {
 					_resultText.text += "\n Ask for e.g what's the weather tomorrow";
@@ -464,11 +464,16 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 
 		private void getWeather(DateTime wdate)
 		{
-			//return me the weather
+			int dateToInt = 0;
+			DateTime today = DateTime.Today;
+			dateToInt = (wdate - today).Days;
+			print(dateToInt);
+			WeatherManager wm = new WeatherManager();
+			wm.FetchWeatherDataFromApi(dateToInt);
 		}
 
 
-		
+
 
 	}
 }
