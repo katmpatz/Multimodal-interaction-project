@@ -405,7 +405,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 				}
 				else if (actionType == "weather")
 				{
-					getWeather(weatherDate)
+					getWeather(weatherDate);
 				}
 				else {
 					_resultText.text += "\n Ask for e.g what's the weather tomorrow";
@@ -437,17 +437,17 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 				case "season":
 					switch (parameter)
 					{
-					case "summmer":
-						videoPlayer.url = "Assets/Videos/video-sky.mp4";
+					case "summer":
+						videoPlayer.url = "Assets/Videos/summer.mp4";
 						break;
 					case "winter":
-						videoPlayer.url = "Assets/Videos/video-sky.mp4";
+						videoPlayer.url = "Assets/Videos/winter.mp4";
 						break;
 					case "spring":
-						videoPlayer.url = "Assets/Videos/video-forest.mp4";
+						videoPlayer.url = "Assets/Videos/spring.mp4";
 						break;
 					case "autumn":
-						videoPlayer.url = "Assets/Videos/Autumn.mp4";
+						videoPlayer.url = "Assets/Videos/autumn.mp4";
 						break;
 					}
 					break;
