@@ -401,7 +401,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 				//call this only if actionType=season, else call katerina's script
 				if (actionType == "season")
 				{
-					ChangeView(actionType, seasonParameter);
+					getSeason(seasonParameter);
 				}
 				else if (actionType == "weather")
 				{
@@ -411,9 +411,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 					_resultText.text += "\n Ask for e.g what's the weather tomorrow";
 				}
 
-				
-				
-
+			
 			}
 
 			_startRecordButton.interactable = true;
@@ -427,39 +425,11 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 
 		}
 
-		void ChangeView(string actionType, string parameter)
+		void getSeason(string parameter)
 		{
 			var videoPlayer = ARObject.GetComponent<UnityEngine.Video.VideoPlayer>();
-			Debug.Log("detected " + actionType + " " + parameter);
 
-			switch (actionType)
-			{
-				case "season":
-					switch (parameter)
-					{
-					case "summer":
-						videoPlayer.url = "Assets/Videos/summer.mp4";
-						break;
-					case "winter":
-						videoPlayer.url = "Assets/Videos/winter.mp4";
-						break;
-					case "spring":
-						videoPlayer.url = "Assets/Videos/spring.mp4";
-						break;
-					case "autumn":
-						videoPlayer.url = "Assets/Videos/autumn.mp4";
-						break;
-					}
-					break;
-				case "weather":
-					switch (parameter)
-					{
-					case "snowing":
-						videoPlayer.url = "Assets/Videos/video-sky.mp4";
-						break;
-					}
-					break;  
-			}
+			videoPlayer.clip = Resources.Load(parameter) as UnityEngine.Video.VideoClip;
 		}
 
 		private void getWeather(DateTime wdate)
