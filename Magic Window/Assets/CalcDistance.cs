@@ -44,7 +44,7 @@ public class CalcDistance : MonoBehaviour
         //ARObject.transform.localScale = new Vector3(1.0f * gap,  1.0f * height, 0.00034f);
         ARObject.transform.localScale = new Vector3(1.0f * gap, 0.00034f, 1.0f * height);
 
-        positionWindow.Set((targetMain.position.x + target1.position.x) / 2, targetMain.position.y, (targetMain.position.z + target2.position.z) / 2);
+        positionWindow.Set((targetMain.position.x + target1.position.x) / 2, (targetMain.position.y + target1.position.y)/2, (targetMain.position.z + target2.position.z) / 2);
         ARObject.transform.position = positionWindow;
 
         //ARObject.transform.position = new Vector3((targetMain.position.x + target1.position.x) / 2, targetMain.position.y, (targetMain.position.z + target2.position.z) / 2);
