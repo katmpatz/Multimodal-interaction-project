@@ -432,14 +432,25 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 			videoPlayer.clip = Resources.Load(parameter) as UnityEngine.Video.VideoClip;
 		}
 
+		//private WeatherManager accwth;
+		 
+
 		private void getWeather(DateTime wdate)
 		{
 			int dateToInt = 0;
 			DateTime today = DateTime.Today;
 			dateToInt = (wdate - today).Days;
 			print(dateToInt);
-			WeatherManager wm = new WeatherManager();
-			wm.FetchWeatherDataFromApi(dateToInt);
+
+			WeatherManager accwth = gameObject.GetComponent<WeatherManager>();
+			//IEnumerator ie = accwth.FetchWeatherDataFromApi(dateToInt);
+			accwth.accessWeather(dateToInt);
+
+
+			//WeatherManager wm = new WeatherManager();
+			//wm.FetchWeatherDataFromApi(dateToInt);
+			print("done");
+
 		}
 
 

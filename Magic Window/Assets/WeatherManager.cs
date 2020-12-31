@@ -42,6 +42,14 @@ public class WeatherManager : MonoBehaviour
         return dtDateTime;
     }
 
+    public void accessWeather(int dateNumber)
+    {
+        print("intermediate phase");
+        StartCoroutine(FetchWeatherDataFromApi(dateNumber));
+        print("intermediate phase 2");
+
+    }
+
     public IEnumerator FetchWeatherDataFromApi(int dateNumber)
     {
         //Stockholm latitude and longitude
@@ -50,6 +58,8 @@ public class WeatherManager : MonoBehaviour
         string url = currentWeatherApi + "lat=" + latitude + "&lon=" + longitude + "&cnt=7" + "&appid=" + apiKey + "&units=metric";
         UnityWebRequest fetchWeatherRequest = UnityWebRequest.Get(url);
         yield return fetchWeatherRequest.SendWebRequest();
+
+        print("weather 1");
         if (fetchWeatherRequest.isNetworkError || fetchWeatherRequest.isHttpError)
         {
             //Check and print error 
@@ -59,6 +69,7 @@ public class WeatherManager : MonoBehaviour
         {
             Debug.Log(fetchWeatherRequest.downloadHandler.text);
             var response = JSON.Parse(fetchWeatherRequest.downloadHandler.text);
+            print("weather");
 
             description.text = response["daily"][0]["weather"][0]["description"];
 
