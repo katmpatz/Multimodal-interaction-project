@@ -14,22 +14,38 @@ public class WeatherManager : MonoBehaviour
 
 
     [Header("UI")]
-    public TextMeshProUGUI temperature;
-    public TextMeshProUGUI dayFull;
-    public TextMeshProUGUI description;
+    public TextMeshPro temperature;
+    public TextMeshPro dayFull;
+    public TextMeshPro description;
     public TextMeshProUGUI statusText;
     private LocationInfo lastLocation;
+    public GameObject ARObject;
+    public GameObject weatherPanel;
+    //public GameObject targetMain;
+    //public GameObject target1;
+    //public GameObject target2;
+    Vector3 positionWindow;
 
+    private CalPosition cp;
 
     void Start()
     {
         print("Start");
-        UpdateWeatherData();
+        weatherPanel.gameObject.SetActive(true);
+        //positionWindow = new Vector3(0.0f, 1.0f, 0.0f);
+        // UpdateWeatherData();
+        // cp = gameObject.GetComponent<CalPosition>();
+        
     }
 
+    void Update()
+    {
+        //positionWindow.Set((targetMain.transform.position.x + target1.transform.position.x) / 2, (targetMain.transform.position.y + target2.transform.position.y) / 2, (targetMain.transform.position.z + target2.transform.position.z) / 2);
+        //weatherPanel.transform.position = positionWindow;
+        
+    }
 
-
-    public void UpdateWeatherData()
+        public void UpdateWeatherData()
     {
         StartCoroutine(FetchWeatherDataFromApi(0)); //Stockholm
     }
@@ -41,7 +57,7 @@ public class WeatherManager : MonoBehaviour
         dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
         return dtDateTime;
     }
-
+/*
     public void accessWeather(int dateNumber)
     {
         print("intermediate phase");
@@ -49,7 +65,7 @@ public class WeatherManager : MonoBehaviour
         print("intermediate phase 2");
 
     }
-
+*/
     public IEnumerator FetchWeatherDataFromApi(int dateNumber)
     {
         //Stockholm latitude and longitude
@@ -67,6 +83,12 @@ public class WeatherManager : MonoBehaviour
         }
         else
         {
+
+            //weatherPanel.gameObject.SetActive(true);
+            
+            //ARObject.gameObject.SetActive(false);
+
+
             Debug.Log(fetchWeatherRequest.downloadHandler.text);
             var response = JSON.Parse(fetchWeatherRequest.downloadHandler.text);
             print("weather");

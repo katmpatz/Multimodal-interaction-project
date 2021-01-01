@@ -77,7 +77,8 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 		// Start is called before the first frame update
 		void Start()
 		{
-			
+			//make the cube fully transparent
+			ARObject.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 0.0f, 0.0f);
 
 			_speechRecognition = GCSpeechRecognition.Instance;
 			_speechRecognition.RecognizeSuccessEvent += RecognizeSuccessEventHandler;
@@ -218,11 +219,15 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 
 			_startRecordButton.interactable = false;
 			_startRecordButton.image.sprite = Mike_Red;
+			ARObject.gameObject.SetActive(true);
+			//pause the video 
+			var videoPlayer = ARObject.GetComponent<UnityEngine.Video.VideoPlayer>();
+			videoPlayer.Pause();
 
-			
+
 			//colour.a = 255f;
 			//_startRecordButton.GetComponent<Image>().color = colour;
-			
+
 
 			//_resultText.text = string.Empty;
 			_resultText.text = "Button clicked";
@@ -427,6 +432,13 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 
 		void getSeason(string parameter)
 		{
+			WeatherManager wd = gameObject.GetComponent<WeatherManager>();
+			//wd.weatherPanel.gameObject.SetActive(false);
+			wd.temperature.text = "";
+			wd.dayFull.text = "";
+			wd.description.text = "";
+			//make the cube fully opaq
+			ARObject.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 			var videoPlayer = ARObject.GetComponent<UnityEngine.Video.VideoPlayer>();
 
 			videoPlayer.clip = Resources.Load(parameter) as UnityEngine.Video.VideoClip;
@@ -442,9 +454,19 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 			dateToInt = (wdate - today).Days;
 			print(dateToInt);
 
+			//remove the video
+			var videoPlayer = ARObject.GetComponent<UnityEngine.Video.VideoPlayer>();
+			videoPlayer.clip = null;
+			//make the cube fully transparent
+			ARObject.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 0.0f, 0.0f);
+
+
 			WeatherManager accwth = gameObject.GetComponent<WeatherManager>();
 			//IEnumerator ie = accwth.FetchWeatherDataFromApi(dateToInt);
-			accwth.accessWeather(dateToInt);
+			//accwth.weatherPanel.gameObject.SetActive(true);
+			StartCoroutine(accwth.FetchWeatherDataFromApi(dateToInt));
+			//accwth.accessWeather(dateToInt);
+			
 
 
 			//WeatherManager wm = new WeatherManager();
