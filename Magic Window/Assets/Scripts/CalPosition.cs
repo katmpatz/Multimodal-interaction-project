@@ -12,11 +12,13 @@ public class CalPosition : MonoBehaviour
 
     //public TMPro.TextMeshProUGUI mytext;
     public GameObject ARObject;
+    //public GameObject weatherPane;
     // public GameObject PlaceholderCube1;
     //public GameObject PlaceholderCube2;
     //public GameObject PlaceholderCubeMain;
 
     Vector3 positionWindow;
+    
     float gap, height;
 
     void Start()
@@ -30,10 +32,13 @@ public class CalPosition : MonoBehaviour
         gap = Vector3.Distance(targetMain.position, target1.position);
         height = Vector3.Distance(targetMain.position, target2.position);
         ARObject.transform.localScale = new Vector3(1.0f * gap, 0.00034f, 1.0f * height);
+        //weatherPane.transform.localScale = new Vector3(1.0f * gap, 0.00034f, 1.0f * height);
 
         //place the Cube by markers' positions
         positionWindow.Set((targetMain.position.x + target1.position.x) / 2, (targetMain.position.y + target2.position.y)/2, (targetMain.position.z + target2.position.z) / 2);
         ARObject.transform.position = positionWindow;
+        
+        ARObject.transform.rotation = targetMain.rotation;
 
 
 

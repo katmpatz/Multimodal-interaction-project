@@ -9,7 +9,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 {
 	public class MagicWindowSpeech : MonoBehaviour
 	{
-
+		
 		private string actionType, seasonParameter;
 		private DateTime weatherDate;
 		
@@ -77,6 +77,9 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 		// Start is called before the first frame update
 		void Start()
 		{
+
+
+
 			//make the cube fully transparent
 			ARObject.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 0.0f, 0.0f);
 
