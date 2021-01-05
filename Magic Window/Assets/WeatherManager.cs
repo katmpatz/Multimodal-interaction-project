@@ -38,7 +38,6 @@ public class WeatherManager : MonoBehaviour
     {
         print("Start");
         weatherPanel.gameObject.SetActive(true);
-        sr = transform.Find("weatherNew/weatherIcon").gameObject.GetComponent<SpriteRenderer>();
         UpdateWeatherData();
 
     }

@@ -20,6 +20,8 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 		public GameObject InstructionPanel;
 		public Sprite Mike_Red, Mike_white;
 
+		public SpriteRenderer sr;
+
 		private Button _startRecordButton,
 						_closeInstructions,
 						_helpButton	;
@@ -81,7 +83,7 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 
 
 			//make the cube fully transparent
-			ARObject.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 0.0f, 0.0f);
+			ARObject.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 0.8f, 0.3f);
 
 			_speechRecognition = GCSpeechRecognition.Instance;
 			_speechRecognition.RecognizeSuccessEvent += RecognizeSuccessEventHandler;
@@ -440,6 +442,10 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 			wd.temperature.text = "";
 			wd.dayFull.text = "";
 			wd.description.text = "";
+
+			//remove weather icon
+			sr.sprite = null;
+
 			//make the cube fully opaq
 			ARObject.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 			var videoPlayer = ARObject.GetComponent<UnityEngine.Video.VideoPlayer>();
@@ -455,26 +461,16 @@ namespace FrostweepGames.Plugins.GoogleCloud.SpeechRecognition
 			int dateToInt = 0;
 			DateTime today = DateTime.Today;
 			dateToInt = (wdate - today).Days;
-			print(dateToInt);
 
 			//remove the video
 			var videoPlayer = ARObject.GetComponent<UnityEngine.Video.VideoPlayer>();
 			videoPlayer.clip = null;
 			//make the cube fully transparent
-			ARObject.GetComponent<Renderer>().material.color = new Color(1.0f, 1.0f, 0.0f, 0.0f);
+			ARObject.GetComponent<Renderer>().material.color = new Color(0.0f, 0.0f, 0.8f, 0.3f);
 
 
 			WeatherManager accwth = gameObject.GetComponent<WeatherManager>();
-			//IEnumerator ie = accwth.FetchWeatherDataFromApi(dateToInt);
-			//accwth.weatherPanel.gameObject.SetActive(true);
 			StartCoroutine(accwth.FetchWeatherDataFromApi(dateToInt));
-			//accwth.accessWeather(dateToInt);
-			
-
-
-			//WeatherManager wm = new WeatherManager();
-			//wm.FetchWeatherDataFromApi(dateToInt);
-			print("done");
 
 		}
 
