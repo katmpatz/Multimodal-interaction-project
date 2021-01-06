@@ -6,6 +6,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Networking;
 using SimpleJSON;
+using UnityEngine.UI;
 
 public class WeatherManager : MonoBehaviour
 {
@@ -14,16 +15,23 @@ public class WeatherManager : MonoBehaviour
 
 
     [Header("UI")]
-    public TextMeshPro temperature;
-    public TextMeshPro dayFull;
-    public TextMeshPro description;
+    public TextMeshProUGUI temperature;
+    public TextMeshProUGUI dayFull;
+    public TextMeshProUGUI description;
     public TextMeshProUGUI statusText;
     private LocationInfo lastLocation;
     public GameObject ARObject;
     public GameObject weatherPanel;
-    //public GameObject targetMain;
-    //public GameObject target1;
-    //public GameObject target2;
+    public Sprite cloudy;
+    public Sprite sun;
+    public Sprite veryCloudy;
+    public Sprite rain;
+    public Sprite storm;
+    public Sprite snow;
+    public Sprite mist;
+    //public SpriteRenderer sr;
+    public Image sr;
+
     Vector3 positionWindow;
 
     private CalPosition cp;
@@ -32,20 +40,19 @@ public class WeatherManager : MonoBehaviour
     {
         print("Start");
         weatherPanel.gameObject.SetActive(true);
-        //positionWindow = new Vector3(0.0f, 1.0f, 0.0f);
-        // UpdateWeatherData();
-        // cp = gameObject.GetComponent<CalPosition>();
         
+        UpdateWeatherData();
+
     }
 
     void Update()
     {
         //positionWindow.Set((targetMain.transform.position.x + target1.transform.position.x) / 2, (targetMain.transform.position.y + target2.transform.position.y) / 2, (targetMain.transform.position.z + target2.transform.position.z) / 2);
         //weatherPanel.transform.position = positionWindow;
-        
+
     }
 
-        public void UpdateWeatherData()
+    public void UpdateWeatherData()
     {
         StartCoroutine(FetchWeatherDataFromApi(0)); //Stockholm
     }
@@ -57,15 +64,7 @@ public class WeatherManager : MonoBehaviour
         dtDateTime = dtDateTime.AddSeconds(unixTimeStamp).ToLocalTime();
         return dtDateTime;
     }
-/*
-    public void accessWeather(int dateNumber)
-    {
-        print("intermediate phase");
-        StartCoroutine(FetchWeatherDataFromApi(dateNumber));
-        print("intermediate phase 2");
 
-    }
-*/
     public IEnumerator FetchWeatherDataFromApi(int dateNumber)
     {
         //Stockholm latitude and longitude
@@ -83,17 +82,11 @@ public class WeatherManager : MonoBehaviour
         }
         else
         {
-
-            //weatherPanel.gameObject.SetActive(true);
-            
-            //ARObject.gameObject.SetActive(false);
-
-
             Debug.Log(fetchWeatherRequest.downloadHandler.text);
             var response = JSON.Parse(fetchWeatherRequest.downloadHandler.text);
-            print("weather");
 
-            description.text = response["daily"][0]["weather"][0]["description"];
+            //Get description for weather
+            description.text = response["daily"][dateNumber]["weather"][0]["description"];
 
             //convert timestamp to date string
             var dayJson = response["daily"][dateNumber]["dt"];
@@ -101,7 +94,45 @@ public class WeatherManager : MonoBehaviour
             var dateT = UnixTimeStampToDateTime(doubleDay);
             dayFull.text = dateT.ToString("ddd, dd MMM yy");
 
-            temperature.text = response["daily"][dateNumber]["temp"]["day"] + " °C";
+            //temperature.text = response["daily"][dateNumber]["temp"]["day"] + " °C";
+
+            var tempJson = response["daily"][dateNumber]["temp"]["day"];
+            var roundTemp = Math.Round(Convert.ToDouble(tempJson));
+            temperature.text = roundTemp + " °C";
+
+            //Get icons for weather
+            var icon = response["daily"][dateNumber]["weather"][0]["icon"];
+            //sr = transform.Find("Canvas/weather/weatherImage").GetComponent<Image>();
+            switch (icon)
+            {
+                case "01d":
+                    sr.sprite = sun;
+                    break;
+                case "02d":
+                    sr.sprite = cloudy;
+                    break;
+                case "03d":
+                    sr.sprite = veryCloudy;
+                    break;
+                case "04d":
+                    sr.sprite = veryCloudy;
+                    break;
+                case "09d":
+                    sr.sprite = rain;
+                    break;
+                case "10d":
+                    sr.sprite = rain;
+                    break;
+                case "11d":
+                    sr.sprite = storm;
+                    break;
+                case "13d":
+                    sr.sprite = snow;
+                    break;
+                case "50d":
+                    sr.sprite = mist;
+                    break;
+            }
         }
     }
 }

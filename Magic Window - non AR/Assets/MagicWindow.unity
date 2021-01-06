@@ -648,34 +648,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72942801}
   m_CullTransparentMesh: 0
---- !u!21 &145282622
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'pict3Material
-
-    18950'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 747f318e951c450789f918fc7ab52de8, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &168307153
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,7 +799,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1713528062}
+  - {fileID: 435389846}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1569,6 +1541,108 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364057507}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &386410266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 386410267}
+  - component: {fileID: 386410269}
+  - component: {fileID: 386410268}
+  m_Layer: 5
+  m_Name: weatherImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &386410267
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386410266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 760547543}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 73}
+  m_SizeDelta: {x: 300, y: 300}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &386410268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386410266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: af3d589e28ac0a5449d87dd6ad06f177, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &386410269
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386410266}
+  m_CullTransparentMesh: 0
+--- !u!21 &435389846
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'Pict4Material
+
+    23086'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: f6123be4658a4c028a12702830862506, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &510576358
 GameObject:
   m_ObjectHideFlags: 0
@@ -2100,7 +2174,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1968212684}
+  - {fileID: 1800565352}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2295,6 +2369,14 @@ MonoBehaviour:
   statusText: {fileID: 0}
   ARObject: {fileID: 0}
   weatherPanel: {fileID: 0}
+  cloudy: {fileID: 0}
+  sun: {fileID: 0}
+  veryCloudy: {fileID: 0}
+  rain: {fileID: 0}
+  storm: {fileID: 0}
+  snow: {fileID: 0}
+  mist: {fileID: 0}
+  sr: {fileID: 0}
 --- !u!4 &746581099
 Transform:
   m_ObjectHideFlags: 0
@@ -2398,6 +2480,7 @@ GameObject:
   - component: {fileID: 760547543}
   - component: {fileID: 760547545}
   - component: {fileID: 760547544}
+  - component: {fileID: 760547546}
   m_Layer: 5
   m_Name: weather
   m_TagString: Untagged
@@ -2419,13 +2502,14 @@ RectTransform:
   - {fileID: 63958351}
   - {fileID: 1859042160}
   - {fileID: 1944524757}
+  - {fileID: 386410267}
   m_Father: {fileID: 2123585269}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -920, y: -431}
-  m_SizeDelta: {x: 720, y: 800}
+  m_AnchoredPosition: {x: -3, y: 50}
+  m_SizeDelta: {x: 900, y: 2000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &760547544
 MonoBehaviour:
@@ -2440,7 +2524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.24528301, g: 0.23255606, b: 0.23255606, a: 0.56078434}
+  m_Color: {r: 0.12774773, g: 0.11903704, b: 0.23584908, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2464,6 +2548,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760547542}
   m_CullTransparentMesh: 0
+--- !u!114 &760547546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760547542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7d3b6a6af46e2b45a6b9827e8718cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  apiKey: 3002bc312f0944b99d15b79863b810fb
+  currentWeatherApi: api.openweathermap.org/data/2.5/onecall?
+  temperature: {fileID: 1859042162}
+  dayFull: {fileID: 63958353}
+  description: {fileID: 1944524755}
+  statusText: {fileID: 0}
+  ARObject: {fileID: 0}
+  weatherPanel: {fileID: 760547542}
+  cloudy: {fileID: 21300000, guid: af3d589e28ac0a5449d87dd6ad06f177, type: 3}
+  sun: {fileID: 21300000, guid: 0250d60216c64a3408e7b658a3186c99, type: 3}
+  veryCloudy: {fileID: 21300000, guid: 2c37686de5e3cb84da4241776686dbd2, type: 3}
+  rain: {fileID: 21300000, guid: 33dc77d56252e5f41b69b78797b23db5, type: 3}
+  storm: {fileID: 21300000, guid: 177561d4b5e4f6e45a8e9f1c5af17f60, type: 3}
+  snow: {fileID: 21300000, guid: 326facbbc854c1b4c9aea486e420baeb, type: 3}
+  mist: {fileID: 21300000, guid: 802de058f06128440b7993122a34a1e5, type: 3}
+  sr: {fileID: 386410268}
 --- !u!1 &777639483
 GameObject:
   m_ObjectHideFlags: 0
@@ -2937,6 +3049,34 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8570325436877047570, guid: e0db9962c4938714281c585a737afc22, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e0db9962c4938714281c585a737afc22, type: 3}
+--- !u!21 &1125140235
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'pict3Material
+
+    23496'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 747f318e951c450789f918fc7ab52de8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1218431859
 GameObject:
   m_ObjectHideFlags: 0
@@ -3687,34 +3827,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520989139}
   m_CullTransparentMesh: 0
---- !u!21 &1713528062
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'Pict4Material
-
-    18560'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f6123be4658a4c028a12702830862506, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1732232186
 GameObject:
   m_ObjectHideFlags: 0
@@ -3945,6 +4057,34 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!21 &1800565352
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 'pict2Material
+
+    23202'
+  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 0f056cebf2ca46d38271e1a4ca66700f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1823476980
 GameObject:
   m_ObjectHideFlags: 0
@@ -4890,34 +5030,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1965091128}
   m_CullTransparentMesh: 0
---- !u!21 &1968212684
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 'pict2Material
-
-    18662'
-  m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 0f056cebf2ca46d38271e1a4ca66700f, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 0.82089555, g: 0.82089555, b: 0.82089555, a: 1}
 --- !u!1 &1970351681
 GameObject:
   m_ObjectHideFlags: 0
@@ -5052,6 +5164,8 @@ MonoBehaviour:
   InstructionPanel: {fileID: 72942801}
   Mike_Red: {fileID: 21300000, guid: c0df793b35cca486781052bf21dc6c22, type: 3}
   Mike_white: {fileID: 21300000, guid: 23d0a8eaadb611848a0d22254eb522bf, type: 3}
+  sr: {fileID: 386410268}
+  weather: {fileID: 760547542}
 --- !u!114 &1970351688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5066,12 +5180,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   apiKey: 3002bc312f0944b99d15b79863b810fb
   currentWeatherApi: api.openweathermap.org/data/2.5/onecall?
-  temperature: {fileID: 1823476982}
-  dayFull: {fileID: 1494352360}
-  description: {fileID: 214168442}
+  temperature: {fileID: 1859042162}
+  dayFull: {fileID: 63958353}
+  description: {fileID: 1944524755}
   statusText: {fileID: 0}
   ARObject: {fileID: 1970351681}
-  weatherPanel: {fileID: 510576358}
+  weatherPanel: {fileID: 760547542}
+  cloudy: {fileID: 21300000, guid: af3d589e28ac0a5449d87dd6ad06f177, type: 3}
+  sun: {fileID: 21300000, guid: 0250d60216c64a3408e7b658a3186c99, type: 3}
+  veryCloudy: {fileID: 21300000, guid: 2c37686de5e3cb84da4241776686dbd2, type: 3}
+  rain: {fileID: 21300000, guid: 33dc77d56252e5f41b69b78797b23db5, type: 3}
+  storm: {fileID: 21300000, guid: 177561d4b5e4f6e45a8e9f1c5af17f60, type: 3}
+  snow: {fileID: 21300000, guid: 326facbbc854c1b4c9aea486e420baeb, type: 3}
+  mist: {fileID: 21300000, guid: 802de058f06128440b7993122a34a1e5, type: 3}
+  sr: {fileID: 386410268}
 --- !u!328 &1970351689
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -5536,7 +5658,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 145282622}
+  - {fileID: 1125140235}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
