@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MagicWindow.unity
+    path: Assets/nonAR-mw.unity
     guid: f75276982dcd64eaab22f103db7debd3
   m_configObjects: {}
